@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.fe9f1b58.css",
+    "main.js": "/static/js/main.ead97449.js",
+    "static/media/login-background.jpg": "/static/media/login-background.764c542f19e12e322696.jpg",
+    "static/media/79946.jpg": "/static/media/79946.8d370f88b779100fb03c.jpg",
+    "static/media/OpenSans-Regular.ttf": "/static/media/OpenSans-Regular.57cd57a648021fa1c396.ttf",
+    "static/media/loki.jpg": "/static/media/loki.3afc9aa24764878bd100.jpg",
+    "static/media/used.svg": "/static/media/used.ce96428cf02c0cdb829c64b6033e4745.svg",
+    "index.html": "/index.html",
+    "main.fe9f1b58.css.map": "/static/css/main.fe9f1b58.css.map",
+    "main.ead97449.js.map": "/static/js/main.ead97449.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fe9f1b58.css",
+    "static/js/main.ead97449.js"
+  ]
+}

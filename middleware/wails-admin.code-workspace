@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../../wails-admin"
+		},
+		{
+			"path": "../../wails-admin/frontend"
+		},
+		{
+			"path": ".."
+		}
+	],
+	"settings": {}
+}

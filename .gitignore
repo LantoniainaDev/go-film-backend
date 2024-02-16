@@ -1,3 +1,6 @@
 /build
 .env
 /tmp
+# /bin
+server.exe
+ffmpeg.env

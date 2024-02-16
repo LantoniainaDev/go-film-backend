@@ -70,6 +70,14 @@ func CompileRouter(app fiber.Router, collectionName string, root string) error {
 			return err
 		}
 
+		if err := film.Validate(); err != nil {
+			return err
+		}
+
+		if err := film.PreSave(root); err != nil {
+			return err
+		}
+
 		film.Id = primitive.NewObjectID()
 
 		if _, err := FilmCollection.InsertOne(context.TODO(), film); err != nil {
@@ -118,6 +126,10 @@ func CompileRouter(app fiber.Router, collectionName string, root string) error {
 		}
 
 		if err := film.Validate(); err != nil {
+			return err
+		}
+
+		if err := film.PreSave(root); err != nil {
 			return err
 		}
 

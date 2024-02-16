@@ -68,11 +68,14 @@ func FilmRouter(app fiber.Router, collectionName string) error {
 			return err
 		}
 
-		// process du schema avant la modif de la base de donnée
-
 		if err := validate.Struct(&film); err != nil {
 			c.SendStatus(http.StatusNotImplemented)
 			return err
+		}
+
+		// process du schema avant la modif de la base de donnée
+		if err := film.PreSave(); err != nil {
+			return nil
 		}
 
 		film.Id = primitive.NewObjectID()
@@ -125,6 +128,27 @@ func FilmRouter(app fiber.Router, collectionName string) error {
 		if err := film.Validate(); err != nil {
 			return err
 		}
+
+		// process du schema avant la modif de la base de donnée
+		var modif models.Modif
+
+		c.BodyParser(&modif)
+		shouldSkip := modif.PosterImg != ""
+
+		fmt.Println("skiped? ", shouldSkip)
+
+		if err := film.PreSave(shouldSkip); err != nil {
+			return nil
+		}
+
+		// modification du poster
+		if modif.PosterImg != "" {
+			if err = CopyImage(modif.PosterImg, "tmp", "film", film.Poster); err != nil {
+				return err
+			}
+		}
+
+		// ---------------------
 
 		updateBson := bson.M{"$set": film}
 		if err != nil {

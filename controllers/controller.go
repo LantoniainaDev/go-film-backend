@@ -35,11 +35,10 @@ func Connect(mongoDBUrl string, DBName string) error {
 func GetCollection(collectionName string) *mongo.Collection {
 	collection := DB.Collection(collectionName)
 
-	// s'assuer que les clées uniques restent uniques
-	_, err := collection.Indexes().CreateOne(context.TODO(), models.GetIndexes())
+	// s'assurer que les clées uniques restent uniques
+	_, err := collection.Indexes().CreateMany(context.TODO(), models.GetIndexes())
 	if err != nil {
 		panic(err)
 	}
-
 	return collection
 }
