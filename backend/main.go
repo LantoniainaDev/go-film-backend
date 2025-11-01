@@ -36,11 +36,6 @@ func Start() {
 
 	// l'API
 
-
-
-
-
-	
 	api := app.Group("/api")
 
 	middleware.FilmRouter(api, config.Getenv("FILM_BD"))
@@ -48,7 +43,7 @@ func Start() {
 	middleware.CompileRouter(api, config.Getenv("ANIME_BD"), "anime")
 	middleware.UsePosterRouter(api)
 
-	api.Get("/contacts",)
+	api.Get("/contacts", middleware.GetContact)
 
 	//le font
 	app.Static("/", config.Getenv("STATIC"))
